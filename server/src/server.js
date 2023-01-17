@@ -1,19 +1,20 @@
 const app = require('express')();
-const http = require('http').Server(app);
+const httpServer = require('http').Server(app);
+const port=4444;
 
 // Habilitació per CORS
 // https://socket.io/docs/v3/handling-cors/
-const io = require("socket.io")(http, {
+const io = require("socket.io")(httpServer, {
     cors: {
-      origin: "http://localhost:8080",
+      origin: `http://localhost:${port}`,
       methods: ["GET", "POST"]
     }
   });
 
 const documents = {};
 
-http.listen(4444, () => {
-    console.log('Listening on port 4444');
+httpServer.listen(port, () => {
+    console.log(`Listening on port ${port}`);
   });
 
 io.on("connection", socket => {
