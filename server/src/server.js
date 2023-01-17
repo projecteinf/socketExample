@@ -1,6 +1,14 @@
 const app = require('express')();
 const http = require('http').Server(app);
-const io = require('socket.io')(http);
+
+// Habilitació per CORS
+// https://socket.io/docs/v3/handling-cors/
+const io = require("socket.io")(http, {
+    cors: {
+      origin: "http://localhost:8080",
+      methods: ["GET", "POST"]
+    }
+  });
 
 const documents = {};
 
