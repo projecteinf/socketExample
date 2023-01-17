@@ -6,8 +6,7 @@ const port=4444;
 // https://socket.io/docs/v3/handling-cors/
 const io = require("socket.io")(httpServer, {
     cors: {
-      origin: `http://localhost:${port}`,
-      methods: ["GET", "POST"]
+      origin: '*',
     }
   });
 
