@@ -6,6 +6,7 @@ import { Document } from '../models/document';
 @Injectable({
   providedIn: 'root'
 })
+
 export class DocumentService {
   currentDocument:Observable<Document> = this.socket.fromEvent<Document>('document');
   documents:Observable<string[]> = this.socket.fromEvent<string[]>('documents');
